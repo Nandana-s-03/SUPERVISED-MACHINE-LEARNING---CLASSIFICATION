@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler,LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+df=pd.read_csv("C:\\Users\\ASUS\\OneDrive\\Desktop\\Heart_Disease_Prediction.csv")
+df
+df.columns
+df.isna()
+df.isna().sum()
+a=LabelEncoder()
+df['Heart Disease encoded']=a.fit_transform(df['Heart Disease'])
+y=df['Heart Disease encoded']
+print(y)
+x=df[['Age','Sex','Chest pain type','BP','Cholesterol','FBS over 120','EKG results','Number of vessels fluro']]
+print(x)
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+s=LogisticRegression(max_iter=1000)
+s.fit(x_train,y_train)
+y_pred=s.predict(x_test)
+print(y_pred)
+accuracy_score=accuracy_score(y_test,y_pred)
+print(accuracy_score)
