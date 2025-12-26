@@ -1,7 +1,6 @@
-# DECISION TREE FOR IRIS DATASET
-# This project demonstrates how to build and visualize a **Decision Tree Classifier** using the **Iris dataset** available in `sklearn.datasets`.  
-# The Iris dataset is a classic dataset in machine learning, containing measurements of iris flowers across three species: *setosa*, *versicolor*, and *virginica*.
-# The goal is to classify iris species based on their features using a decision tree model.
+# TITANIC DATASET USING DECISION TREE CLASSIFIER
+# This project applies a Decision Tree Classifier to predict passenger survival on the Titanic.
+# Decision Trees are intuitive models that split data into branches based on feature values, making them easy to interpret and visualize.
 # PROJECT WORKFLOW
 # 1. Load the Iris dataset using `sklearn.datasets.load_iris`.
 # 2. Split the dataset into training and testing sets.
