@@ -11,4 +11,5 @@
 # 7. Predict the class labels on test data
 # 8. Evaluate the model using:
 #    Accuracy score
+#    Classification Report
 # 9. Visualize the decision tree using `plot_tree`
