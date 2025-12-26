@@ -2,24 +2,46 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler,LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
-data=load_iris()
-x=data.data
+from sklearn.metrics import accuracy_score,classification_report
+df=pd.read_csv("C:\\Users\\ASUS\\OneDrive\\Desktop\\titanic null dataset.csv")
+df
+df.head()
+df.dtypes
+df.columns
+df.isna()
+df.isna().sum()
+df.drop(columns=['deck'],inplace=True)
+df.isna().sum()
+df.drop(columns=['embarked','embark_town'],inplace=True)
+df['age']=df['age'].fillna(df['age'].median())
+df
+x=df.drop('survived',axis=1)
 print(x)
-y=data.target
+y=df['survived']
 print(y)
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.3,random_state=99)
-clf=DecisionTreeClassifier(random_state=1)
+le=LabelEncoder()
+for i in x.columns:
+    if x[i].dtype=='object':
+        x[i]=le.fit_transform(x[i])
+if y.dtype=='object':
+    y=le.fit_transform(y)
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+scaler=StandardScaler()
+x_train=scaler.fit_transform(x_train)
+x_test=scaler.transform(x_test)
+clf=DecisionTreeClassifier(max_depth=4,random_state=42)
 clf.fit(x_train,y_train)
 y_pred=clf.predict(x_test)
 print(y_pred)
 accuracy=accuracy_score(y_test,y_pred)
 print(accuracy)
+classification_report=classification_report(y_test,y_pred)
+print(classification_report)
 from sklearn.tree import plot_tree
 plt.figure(figsize=(20,10))
 plot_tree(clf,rounded=True,filled=True,feature_names=data.feature_names,fontsize=10)
-plt.title('Decision Tree Classifier Plot for Diabetes Dataset')
+plt.title('Decision Tree Classifier Plot for Titanic Dataset')
 plt.show()
