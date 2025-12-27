@@ -5,7 +5,7 @@
 # PROJECT WORKFLOW
 # 1. Import Libraries
 # 2. Load the dataset 
-# 3. Data Preprocessing – Missing values checked, target column (Heart Disease) encoded using LabelEncoder
+# 3. Data Preprocessing – Missing values checked, target column encoded using LabelEncoder
 # 4. Feature Selection
 # 5. Split the dataset into training and testing sets
 # 6. Train Support Vector Model model
