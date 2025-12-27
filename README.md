@@ -7,7 +7,7 @@
 # 3. Data Preprocessing – Missing values checked, target column encoded using LabelEncoder
 # 4. Feature Selection
 # 5. Split the dataset into training and testing sets
-# 6. Train Random Forest Classifier model
+# 6. Train Decision Tree Classifier model
 # 7. Predict the class labels on test data
 # 8. Evaluate the model using:
 #    Accuracy score
